@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+<div class="bg-gray-100 rounded-lg grid grid-cols-2 mt-10 p-3 mx-12">
+    <div class="col-spans-1">
+        <div class="rounded-lg h-128 bg-gray-700">Picture</div>
+    </div>
+    <div class="grid grid-cols-2 text-xl">
+        <div class="ml-4">ชื่อ - นามสกุล :</div>
+        <div class="ml-4">สมชาย เข็มหมุด</div>
+        <div class="ml-4">เลขบัตรประชาชน :</div>
+        <div class="ml-4">1234567890123</div>
+    </div>
+</div>
+<div class="grid grid-cols-2 mt-10 mx-12 text-xl">
+    <div class="flex bg-gray-400 rounded-l-lg py-3">    
+        <div class="flex-none w-24 ml-3">มาจาก :</div>
+        <div class="flex-auto">หาดใหญ่</div>
+        <div class="flex-none w-24">เวลา :</div>
+        <div class="flex-auto">15:20 6/8/2022</div>
+    </div>
+    <div class="flex bg-gray-200 rounded-r-lg py-3"> 
+        <div class="flex-none w-24 ml-3">กำลังไปที่ :</div>
+        <div class="flex-auto">กรุงเทพ</div>
+        <div class="flex-none w-24">เวลา :</div>
+        <div class="flex-auto">15:20 7/8/2022</div>
+    </div>
+</div>
+{% endblock %}

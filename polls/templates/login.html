@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Login Page{% endblock %}
+{% block content %}
+
+<div class="bg-gray-200 rounded-lg  mt-40 mx-80 text-center text-2xl">
+    <div class="bg-green-300 rounded-t-lg my-3 py-3">
+        ระบบตรวจสอบบุคคลเดินทางเข้าจังหวัดสงขลา
+    </div>
+    <h1>{% if login_status %}ลงชื่อเข้าใช้ระบบ {% endif %} {% if not login_status %} ไม่มีผู้ใช้ในระบบ {% endif %}</h1>
+    <form method="POST">
+        <!-- {{ form.as_p }} -->
+        {% csrf_token %}
+        <div class="my-3">
+            <label class="mr-3">Username</label>
+            <input type="text" id="username" name="username" placeholder="Username" required><br>
+        </div>
+
+        <div class="my-3">
+            <label class="mr-3">Password</label>
+            <input type="password" id="password" name="password" placeholder="Password" required><br>
+        </div>
+        <button type="submit" class="text-white bg-green-400  border-teal-300  font-medium rounded-lg text-sm px-4 py-2 my-3">Login</button>
+    </form>
+</div>
+
+{% endblock %}

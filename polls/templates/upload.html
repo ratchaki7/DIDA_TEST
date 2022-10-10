@@ -1,0 +1,141 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Upload Page{% endblock %}
+{% block content %}
+
+<form method="post">
+    {% csrf_token %}
+    <div class="md:bg-green-300 rounded-t-lg  mt-10 p-3 mx-12 text-center text-2xl">
+        ระบบตรวจสอบบุคคลเดินทางเข้าจังหวัดสงขลา
+    </div>
+    <div class="bg-gray-100 grid grid-cols-2 mt-0 p-3 mx-12">
+        <div class="relative z-0 mt-2 col-span-1 pr-16">
+            <input type="name"  name="floating_name" id="namez" class="block w-full pt-5 px-0  text-xl text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+            <label for="floating_name" class="peer-focus:font-medium absolute text-xl text-gray-500  duration-300 transform -translate-y-4 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-5">ชื่อ</label>
+        </div>
+        <div class="relative z-0 mt-2 col-span-1 pr-16">
+            <input type="surname" name="floating_surname" id="surnamez" class="block w-full pt-5 px-0  text-xl text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+            <label for="floating_surname" class="peer-focus:font-medium absolute text-xl text-gray-500  duration-300 transform -translate-y-4 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-5">นามสกุล</label>
+        </div>
+    </div>
+    <div class="bg-gray-100 grid grid-cols-2 mt-0 p-3 mx-12">
+        <div class="relative z-0 mt-2 col-span-1 pr-16">
+            <input maxlength="13" type="cid" name="cidz" id="floating_cid" class="block w-full pt-5 px-0  text-xl text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+            <label for="floating_cid" class="peer-focus:font-medium absolute text-xl text-gray-500  duration-300 transform -translate-y-4 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-5">เลขบัตรประชาชน</label>
+        </div>
+        <div class="relative z-0 mt-2 col-span-1 pr-16">
+            <input maxlength="10" type="phone" name="phonez" id="floating_phone" class="block w-full pt-5 px-0  text-xl text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+            <label for="floating_phone" class="peer-focus:font-medium absolute text-xl text-gray-500  duration-300 transform -translate-y-4 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-5">เบอโทรศัพท์</label>
+        </div>
+    </div>
+
+    <div class="bg-gray-100 grid grid-cols-5 mt-0 p-3 mx-12 pt-8">
+        <div class="relative z-0 mt-2 col-span-1 pr-1 text-gray-700 text-lg">
+            เดินทางจากต่างประเทศ
+        </div>
+        
+        <!-- ประเทศ-->
+        <select id="countries" name="countryz" class="bg-white text-gray-700 text-lg rounded-lg focus:ring-blue-300 focus:border-blue-500 focus:ring-4 p-2.5 mx-4 ">
+            <option>ระบุประเทศ</option>
+        </select>
+    </div>
+
+    <div class="bg-gray-100 grid grid-cols-5 mt-0 p-3 mx-12 pt-4">
+        <div class="relative z-0 mt-2 col-span-1 pr-1 text-gray-700 text-lg">
+            เดินทางจากภายในประเทศ
+        </div>
+
+        <!-- จังหวัด -->
+        <select id="provinces" name="provincez" class="bg-white text-gray-700 text-lgrounded-lg focus:ring-blue-300 focus:border-blue-500 focus:ring-4 p-2.5 mx-4 ">
+            <option>ระบุจังหวัด</option>
+        </select>
+
+
+        <!-- อำเภอ -->
+        <select id="cities" name="cityz" class="bg-white text-gray-700 text-lg rounded-lg focus:ring-blue-300 focus:border-blue-500 focus:ring-4 p-2.5 mx-4 ">
+            <option>ระบุอำเภอ/เขต</option>
+        </select>
+
+        <!-- ตำบล -->
+        <select id="subcities" name="tambonz" class="bg-white text-gray-700 text-lg rounded-lg focus:ring-blue-300 focus:border-blue-500 focus:ring-4 p-2.5 mx-4 ">
+            <option >ระบุตำบล</option>
+ 
+            </select>
+
+        <!-- เดินทางโดย-->
+        <select id="vehivles" name="vahiclez" class="bg-white text-gray-700 text-lg rounded-lg focus:ring-blue-300 focus:border-blue-500 focus:ring-4 p-2.5 mx-4 ">
+            <option>ระบุการเดินทาง</option>
+            <option value="train">รถไฟ</option>
+            <option value="plane">เครื่องบิน</option>
+            <option value="car">รถยนต์ส่วนบุคคล</option> 
+            <option value="bus">รถขนส่งสาธารณะ</option> 
+            <option value="boat">ทางเรือ</option>
+        </select>
+    </div>
+
+
+    <!-- เดินทางไปยัง -->
+    <div class="bg-gray-100 grid grid-cols-5 mt-0 p-3 mx-12 pt-8">
+        <div class="relative z-0 mt-2 col-span-1 pr-1 text-gray-700">
+            เดินทางไปยัง
+        </div>
+        
+
+        <!-- จังหวัด -->
+        <select id="provincesGo" name="provincezGO" class="bg-white text-gray-700 text-lg rounded-lg focus:ring-blue-300 focus:border-blue-500 focus:ring-4 p-2.5 mx-4 ">
+            <option>ระบุจังหวัด</option>
+        </select>
+    
+    
+        <!-- อำเภอ -->
+        <select id="citiesGo" name="cityzGo" class="bg-white text-gray-700 text-lg rounded-lg focus:ring-blue-300 focus:border-blue-500 focus:ring-4 p-2.5 mx-4 ">
+            <option>ระบุอำเภอ/เขต</option>
+        </select>
+
+        <!-- ตำบล -->
+        <select id="subcitiesGo" name="tambonzGo" class="bg-white text-gray-700 text-lg rounded-lg focus:ring-blue-300 focus:border-blue-500 focus:ring-4 p-2.5 mx-4 ">
+            <option>ระบุตำบล</option>
+        </select>
+
+        <!-- เดินทางโดย-->
+        <select id="vehivlesGo" name="vehiclezGo" class="bg-white text-gray-700 text-lg rounded-lg focus:ring-blue-300 focus:border-blue-500 focus:ring-4 p-2.5 mx-4 ">
+            <option>ระบุการเดินทาง</option>
+            <option value="train">รถไฟ</option>
+            <option value="plane">เครื่องบิน</option>
+            <option value="car">รถยนต์ส่วนบุคคล</option> 
+            <option value="bus">รถขนส่งสาธารณะ</option> 
+            <option value="boat">ทางเรือ</option>
+        </select>       
+    </div>
+
+
+    <div class=" bg-gray-100 grid grid-cols-3 mt-0 p-3 mx-12 pt-10">
+        <div class="col-span-1"></div>
+        <label for="upload_photo" class="flex justify-center h-28 bg-gray-50 rounded-lg border-2 border-gray-300 border-dashed cursor-pointer">
+            <div class="text-center pt-3 pb-6 col-span-1">
+                <i class="fa-solid fa-cloud-arrow-up text-3xl"></i>
+                <p class="text-lg text-gray-500 "><span class="font-semibold">Click to upload
+                <p class="text-lg text-gray-500 ">รูปบัตรประจำตัวประชาชน</p>
+            </div>
+            <input id="upload_photo" type="file" class="hidden" />
+        </label>
+    </div> 
+    <div class=" bg-gray-100 grid grid-cols-3 mt-0 p-3 mx-12 pt-2 rounded-b-lg">
+        <div class="col-span-1"></div>
+        <button type="submit" class="bg-green-300  border-teal-300 rounded-lg text-xl px-4 py-2">
+            ยืนยันข้อมูล
+        </button>
+    </div>
+</form>
+
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+
+<script src="{% static 'cities.js' %}"></script>
+
+<script src="{% static 'upload.js' %}"></script>
+{% endblock %}

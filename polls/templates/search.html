@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+{% block title %}Search{% endblock %}
+{% block content %}
+{% if request.user.is_authenticated %}
+<div class="mt-10 p-3 mx-12">
+    <label for="personNum-search" class="block mb-2 text-3xl font-bold text-gray-700">ค้นหารายชื่อ</label>
+    <form method="post">
+        {% csrf_token %}
+        <div class="flex">
+            <div class="flex-none w-54 relative">
+                <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none text-gray-900">
+                    <i class="fa-solid fa-id-card"></i>
+                </div>
+                <input type="search" name="patient-cid" class="block p-4 pl-10 w-full text-sm text-gray-900 bg-gray-50 rounded-l-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500" placeholder="เลขประจำตัวประชาชน">
+            </div>
+        
+            <div class="flex-auto relative">
+                <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none text-gray-900">
+                    <i class="fa-solid fa-user-large"></i>
+                </div>
+                <input type="search" name="patient-name" class="block p-4 pl-10 w-full text-sm text-gray-900 bg-gray-50 rounded-r-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500" placeholder="ชื่อ นามสกุล">
+                <button type="submit" class="text-white absolute right-2.5 bottom-2.5 bg-green-400 border-teal-300 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 ">Search</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="mt-12 p-3 mx-12">
+    <div class="p-6 w-full bg-white rounded-lg border border-gray-200 shadow-md">
+        <h5 class="mb-2 text-xl tracking-tight text-gray-900">พบรายชื่อ จำนวน ?? ราย</h5>
+        <div class="overflow-x-auto relative shadow-md sm:rounded-lg mt-5">
+            <table class="w-full text-base text-left text-gray-500 font-bold">
+                <thead class="text-base text-gray-700 uppercase bg-gray-400">
+                    <tr>
+                        <th scope="col" class="py-3 px-6">
+                            เลขประจำตัวประชาชน
+                        </th>
+                        <th scope="col" class="py-3 px-6">
+                            ชื่อ
+                        </th>
+                        <th scope="col" class="py-3 px-6">
+                            นามสกุล
+                        </th>
+                        <th scope="col" class="py-3 px-6">
+                            เดินทางจาก
+                        </th>
+                        <th scope="col" class="py-3 px-6">
+                            ไปยัง
+                        </th>
+                        <th scope="col" class="py-3 px-6">
+                        </th> 
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="bg-white border-b ">
+                        <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap">
+                            1234567890123
+                        </th>
+                        <td class="py-4 px-6">
+                            สมชาย
+                        </td>
+                        <td class="py-4 px-6">
+                            เข็มหมุด
+                        </td>
+                        <td class="py-4 px-6">
+                            กรุงเทพ
+                        </td>
+                        <td class="py-4 px-6">
+                            สงขลา
+                        </td>
+                        <td class="py-4 px-6">
+                            <a type="button" class="text-white bg-green-400  border-teal-300  font-medium rounded-lg text-sm px-4 py-2" href="/information/1234567890123">
+                                ดูข้อมูล
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endif %}
+{% endblock %}
